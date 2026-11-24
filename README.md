@@ -9,7 +9,7 @@ Sistema web de gestión de inventario desarrollado con **Node.js, Express y MySQ
 - Gestión de proveedores.
 - Administración de sucursales.
 - Consulta y administración del inventario.
-- Registro y administración de movimientos de inventario.
+- Registro y administración de movimientos.
 - Gestión de detalles de movimientos.
 - Operaciones CRUD (Crear, Leer, Actualizar y Eliminar).
 - Validación de datos mediante middleware.
@@ -17,14 +17,14 @@ Sistema web de gestión de inventario desarrollado con **Node.js, Express y MySQ
 
 ## Tecnologías utilizadas
 
-### Backend
+**Backend**
 - Node.js
 - Express.js
 - MySQL
 - mysql2
 - dotenv
 
-### Frontend
+**Frontend**
 - HTML5
 - CSS3
 - JavaScript
@@ -39,70 +39,76 @@ sistema-inventario-siman/
 │   └── database.js
 │
 ├── controllers/
-│   ├── categoriaController.js
-│   ├── detalleMovimientoController.js
-│   ├── inventarioController.js
-│   ├── movimientoController.js
-│   ├── productoController.js
-│   ├── proveedorController.js
-│   ├── reportesController.js
-│   ├── rolController.js
-│   ├── sucursalController.js
-│   └── usuarioController.js
-│
 ├── middleware/
-│
 ├── models/
+├── routes/
+│
+├── database/
+│   └── sistema_inventario_siman.sql
 │
 ├── public/
 │   ├── css/
 │   ├── js/
-│   └── *.html
+│   └── archivos HTML
 │
-├── routes/
-│
-├── .env
 ├── .gitignore
 ├── package.json
+├── package-lock.json
 ├── server.js
 └── README.md
 ```
 
 ## Requisitos previos
 
-Antes de ejecutar el proyecto, asegúrate de tener instalado:
+Antes de ejecutar el proyecto, es necesario tener instalado:
 
 - [Node.js](https://nodejs.org/)
 - [MySQL](https://dev.mysql.com/downloads/)
+- [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
 - [Git](https://git-scm.com/)
 
 ## Instalación
 
-1. Clonar el repositorio:
+### 1. Clonar el repositorio
 
 ```bash
 git clone https://github.com/Crishuezo1702/sistema-inventario-siman.git
 ```
 
-2. Entrar al directorio:
+### 2. Entrar al directorio
 
 ```bash
 cd sistema-inventario-siman
 ```
 
-3. Instalar las dependencias:
+### 3. Instalar las dependencias
 
 ```bash
 npm install
 ```
 
-4. Crear la base de datos MySQL:
+### 4. Importar la base de datos
 
-```sql
-CREATE DATABASE sistema_inventario_siman;
+El proyecto incluye el script SQL ubicado en:
+
+```text
+database/sistema_inventario_siman.sql
 ```
 
-5. Crear un archivo `.env` en la raíz del proyecto con las credenciales de tu base de datos:
+Para importarlo utilizando MySQL Workbench:
+
+1. Abrir MySQL Workbench y conectarse al servidor local.
+2. Seleccionar **Server → Data Import**.
+3. Seleccionar **Import from Self-Contained File**.
+4. Buscar el archivo `database/sistema_inventario_siman.sql`.
+5. Iniciar la importación con **Start Import**.
+6. Actualizar la sección SCHEMAS y comprobar que aparezca `sistema_inventario_siman`.
+
+El script contiene la estructura de las tablas, sus relaciones y datos de prueba.
+
+### 5. Configurar las variables de entorno
+
+Crear un archivo `.env` en la raíz del proyecto con las credenciales de conexión a MySQL:
 
 ```env
 DB_HOST=localhost
@@ -111,21 +117,35 @@ DB_PASSWORD=tu_contraseña
 DB_NAME=sistema_inventario_siman
 ```
 
-6. Configurar las tablas de la base de datos antes de iniciar la aplicación.
+**Importante:** utilizar las credenciales correspondientes al servidor MySQL local. No subir el archivo `.env` a GitHub.
 
-## Ejecución
-
-Iniciar el servidor con:
+### 6. Ejecutar el servidor
 
 ```bash
 node server.js
 ```
 
-Cuando el servidor esté funcionando, acceder desde el navegador:
+Cuando el servidor esté funcionando, abrir el navegador en:
 
 ```text
 http://localhost:8080
 ```
+
+## Base de datos
+
+El sistema utiliza una base de datos MySQL compuesta por las siguientes nueve tablas:
+
+1. `roles`
+2. `usuarios`
+3. `categorias`
+4. `proveedores`
+5. `sucursales`
+6. `productos`
+7. `inventario`
+8. `movimientos_inventario`
+9. `detalle_movimiento`
+
+El modelo de datos utiliza claves primarias y foráneas para relacionar la información entre las tablas.
 
 ## Autor
 
@@ -134,6 +154,8 @@ http://localhost:8080
 Estudiante de Ingeniería en Ciencias de la Computación.
 
 GitHub: [@Crishuezo1702](https://github.com/Crishuezo1702)
+
+Repositorio: [Sistema de Inventario SIMAN](https://github.com/Crishuezo1702/sistema-inventario-siman)
 
 ---
 
