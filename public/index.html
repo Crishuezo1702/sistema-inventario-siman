@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMAN | Sistema de inventario</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+        <div class="app-container">
+
+            <aside class="sidebar">
+
+                <div class="brand">
+                    <h2>SIMAN</h2>
+                    <span>Sistema de Inventario</span>
+                </div>
+
+                <nav class="menu">
+                    <a href="#" class="menu-item active">
+                        <span>▦</span>Dashboard
+                    </a>
+
+                    <p class="menu-title">GESTION</p>
+
+                    <a href="productos.html" class="menu-item">
+                        <span>▣</span>Productos
+                    </a>
+
+                    <a href="categorias.html" class="menu-item">
+                        <span>▤</span>Categorias
+                    </a>
+
+                    <a href="proveedores.html" class="menu-item">
+                        <span>♧</span>Proveedores
+                    </a>
+                    <a href="sucursales.html" class="menu-item">
+                        <span>⌂</span>Sucursales
+                    </a>
+                    <a href="inventario.html" class="menu-item">
+                        <span>▦</span>Inventario
+                    </a>
+                    <a href="movimientos.html" class="menu-item">
+                        <span>⇄</span>Movimientos
+                    </a>
+
+                    <p class="menu-title">ADMINISTRACION</p>
+
+                    <a href="#" class="menu-item">
+                        <span>♙</span>Usuarios
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <span>▥</span>Reportes
+                    </a>
+                </nav>
+
+                <div class="sidebar-footer">
+                    Sistema de Inventario Siman
+                </div>
+
+            </aside>
+            
+            <main class="main-content">
+
+                <header class="topbar">
+                    <div>
+                        <h1>Dashboard</h1>
+                        <p>Resumen general del inventario</p>
+                    </div>
+
+                    <div class="user-info">
+                        <div class="user-avatar">A</div>
+                       <div>
+                            <strong>Administracion</strong>
+                            <small>Panel de control</small> 
+                       </div> 
+                    </div>
+                </header>
+
+                <section class="dashboard-section">
+
+                    <h2 class="section-title">Resumen general</h2>
+
+                    <div class="row g-4">
+
+                        <div class="col-12 col-md-6 col-xl-3">
+                           <article class="summary-card">
+                                <div class="card-icon blue">▣</div>
+                                <p>Total de productos</p>
+                                <h3 id="totalProductos">--</h3>
+                                <small>Productos registrados</small>
+                           </article> 
+                        </div>
+
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <article class="summary-card">
+                                <div class="card-icon green">▦</div>
+                                <p>Unidades en inventario</p>
+                                <h3 id="totalUnidades">--</h3>
+                                <small>Existencias de las sucursales</small>
+                            </article>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <article class="summary-card">
+                                <div class="card-icon orange">!</div>
+                                <p>Reposicion necesaria</p>
+                                <h3 id="productosReposicion">--</h3>
+                                <small>Registros bajo o en el minimo</small>
+                            </article>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <article class="summary-card">
+                                <div class="card-icon purple">$</div>
+                                <p>Valor del inventario</p>
+                                <h3 id="valorInventario">--</h3>
+                                <small>Valor estimado de existencias</small>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="dashboard-section">
+                    <h2 class="section-title">Accesos rapidos</h2>
+
+                    <div class="row g-4">
+
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <article class="quick-card">
+                                <h3>Productos</h3>
+                                <p>Consulta y administra los productos registrados.</p>
+                                <a href="#" class="quick-link">Ver productos →</a>
+                            </article>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <article class="quick-card">
+                                <h3>Inventario</h3>
+                                <p>Consulta las existencias disponibles por sucursal.</p>
+                                <a href="#" class="quick-link">Ver inventario →</a>
+                            </article>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <article class="quick-card">
+                                <h3>Reportes</h3>
+                                <p>Consulta indicadores y reportes del sistema.</p>
+                                <a href="#" class="quick-link">Ver reportes →</a>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="footer">
+                    Sistema de Inventario SIMAN . Proyecto academico
+                </footer>
+            </main>
+
+        </div>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"    
+></script>
+<script src="js/app.js"></script>
+</body>
+</html>

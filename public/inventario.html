@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SIMAN | Inventario</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- MENÚ LATERAL -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <h2>SIMAN</h2>
+                <span>Sistema de Inventario</span>
+            </div>
+
+            <nav class="menu">
+
+                <a href="index.html" class="menu-item">
+                    <span>▦</span>Dashboard
+                </a>
+
+                <p class="menu-title">GESTION</p>
+
+                <a href="productos.html" class="menu-item">
+                    <span>▣</span>Productos
+                </a>
+
+                <a href="categorias.html" class="menu-item">
+                    <span>▤</span>Categorías
+                </a>
+
+                <a href="proveedores.html" class="menu-item">
+                    <span>♧</span>Proveedores
+                </a>
+
+                <a href="sucursales.html" class="menu-item">
+                    <span>⌂</span>Sucursales
+                </a>
+
+                <a href="inventario.html" class="menu-item active">
+                    <span>▦</span>Inventario
+                </a>
+
+                <a href="movimientos.html" class="menu-item">
+                    <span>⇄</span>Movimientos
+                </a>
+
+                <p class="menu-title">ADMINISTRACION</p>
+
+                <a href="#" class="menu-item">
+                    <span>♙</span>Usuarios
+                </a>
+
+                <a href="#" class="menu-item">
+                    <span>▥</span>Reportes
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                Sistema de Inventario SIMAN
+            </div>
+
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div>
+                    <h1>Inventario</h1>
+                    <p>Consulta y administra las existencias por sucursal</p>
+                </div>
+
+                <div class="user-info">
+                    <div class="user-avatar">A</div>
+
+                    <div>
+                        <strong>Administracion</strong>
+                        <small>Panel de control</small>
+                    </div>
+                </div>
+
+            </header>
+
+            <!-- LISTADO DE INVENTARIO -->
+            <section class="dashboard-section">
+
+                <div class="d-flex justify-content-between
+                            align-items-center flex-wrap gap-3 mb-4">
+
+                    <div>
+                        <h2 class="section-title">
+                            Control de inventario
+                        </h2>
+
+                        <p>
+                            Existencias de productos registradas en cada sucursal.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="btnNuevoInventario"
+                        class="btn btn-danger"
+                    >
+                        + Nuevo inventario
+                    </button>
+
+                </div>
+
+                <div class="table-responsive bg-white rounded-4
+                            shadow-sm p-3">
+
+                    <table class="table table-hover align-middle mb-0">
+
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Producto</th>
+                                <th>Código</th>
+                                <th>Sucursal</th>
+                                <th>Cantidad</th>
+                                <th>Stock mínimo</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaInventario">
+                            <tr>
+                                <td colspan="8" class="text-center">
+                                    Aquí aparecerá el inventario registrado.
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <!-- MODAL PARA CREAR Y EDITAR INVENTARIO -->
+            <div
+                class="modal fade"
+                id="modalInventario"
+                tabindex="-1"
+                aria-labelledby="tituloModalInventario"
+                aria-hidden="true"
+            >
+
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h5
+                                class="modal-title"
+                                id="tituloModalInventario"
+                            >
+                                Nuevo inventario
+                            </h5>
+
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Cerrar"
+                            ></button>
+
+                        </div>
+
+                        <form id="formInventario">
+
+                            <div class="modal-body">
+
+                                <div class="mb-3">
+
+                                    <label
+                                        for="productoInventario"
+                                        class="form-label"
+                                    >
+                                        Producto
+                                    </label>
+
+                                    <select
+                                        class="form-select"
+                                        id="productoInventario"
+                                        required
+                                    >
+                                        <option value="">
+                                            Seleccione un producto
+                                        </option>
+                                    </select>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label
+                                        for="sucursalInventario"
+                                        class="form-label"
+                                    >
+                                        Sucursal
+                                    </label>
+
+                                    <select
+                                        class="form-select"
+                                        id="sucursalInventario"
+                                        required
+                                    >
+                                        <option value="">
+                                            Seleccione una sucursal
+                                        </option>
+                                    </select>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label
+                                        for="cantidadInventario"
+                                        class="form-label"
+                                    >
+                                        Cantidad disponible
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        class="form-control"
+                                        id="cantidadInventario"
+                                        min="0"
+                                        step="1"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer">
+
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                >
+                                    Cancelar
+                                </button>
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-danger"
+                                    id="btnGuardarInventario"
+                                >
+                                    Guardar inventario
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <footer class="footer">
+                Sistema de Inventario SIMAN . Proyecto académico
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/inventario.js"></script>
+
+</body>
+</html>

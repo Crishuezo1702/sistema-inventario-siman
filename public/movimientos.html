@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMAN | Movimientos</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <h2>SIMAN</h2>
+                <span>Sistema de Inventario</span>
+            </div>
+
+            <nav class="menu">
+
+                <a href="index.html" class="menu-item">
+                    <span>▦</span>Dashboard
+                </a>
+
+                <p class="menu-title">GESTION</p>
+
+                <a href="productos.html" class="menu-item">
+                    <span>▣</span>Productos
+                </a>
+
+                <a href="categorias.html" class="menu-item">
+                    <span>▤</span>Categorías
+                </a>
+
+                <a href="proveedores.html" class="menu-item">
+                    <span>♧</span>Proveedores
+                </a>
+
+                <a href="sucursales.html" class="menu-item">
+                    <span>⌂</span>Sucursales
+                </a>
+
+                <a href="inventario.html" class="menu-item">
+                    <span>▦</span>Inventario
+                </a>
+
+                <a href="movimientos.html" class="menu-item active">
+                    <span>⇄</span>Movimientos
+                </a>
+
+                <p class="menu-title">ADMINISTRACION</p>
+
+                <a href="#" class="menu-item">
+                    <span>♙</span>Usuarios
+                </a>
+
+                <a href="#" class="menu-item">
+                    <span>▥</span>Reportes
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                Sistema de Inventario SIMAN
+            </div>
+
+        </aside>
+
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div>
+                    <h1>Movimientos</h1>
+                    <p>
+                        Consulta y administra las entradas y salidas
+                        de inventario
+                    </p>
+                </div>
+
+                <div class="user-info">
+
+                    <div class="user-avatar">A</div>
+
+                    <div>
+                        <strong>Administracion</strong>
+                        <small>Panel de control</small>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- LISTADO DE MOVIMIENTOS -->
+            <section class="dashboard-section">
+
+                <div class="d-flex justify-content-between
+                            align-items-center flex-wrap gap-3 mb-4">
+
+                    <div>
+                        <h2 class="section-title">
+                            Listado de movimientos
+                        </h2>
+
+                        <p>
+                            Movimientos registrados en el sistema
+                            de inventario.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="btnNuevoMovimiento"
+                        class="btn btn-danger"
+                    >
+                        + Nuevo movimiento
+                    </button>
+
+                </div>
+
+
+                <!-- TABLA -->
+                <div class="table-responsive bg-white rounded-4
+                            shadow-sm p-3">
+
+                    <table class="table table-hover align-middle mb-0">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>ID</th>
+                                <th>Tipo</th>
+                                <th>Sucursal</th>
+                                <th>Usuario</th>
+                                <th>Fecha</th>
+                                <th>Observación</th>
+                                <th>Acciones</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="tablaMovimientos">
+
+                            <tr>
+                                <td colspan="7" class="text-center">
+                                    Aquí aparecerán los movimientos.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- MODAL CREAR Y EDITAR MOVIMIENTOS -->
+            <div
+                class="modal fade"
+                id="modalMovimiento"
+                tabindex="-1"
+                aria-labelledby="tituloModalMovimiento"
+                aria-hidden="true"
+            >
+
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <div class="modal-content">
+
+                        <!-- HEADER MODAL -->
+                        <div class="modal-header">
+
+                            <h5
+                                class="modal-title"
+                                id="tituloModalMovimiento"
+                            >
+                                Nuevo movimiento
+                            </h5>
+
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Cerrar"
+                            ></button>
+
+                        </div>
+
+
+                        <!-- FORMULARIO -->
+                        <form id="formMovimiento">
+
+                            <div class="modal-body">
+
+                                <!-- TIPO -->
+                                <div class="mb-3">
+
+                                    <label
+                                        for="tipoMovimiento"
+                                        class="form-label"
+                                    >
+                                        Tipo de movimiento
+                                    </label>
+
+                                    <select
+                                        class="form-select"
+                                        id="tipoMovimiento"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Selecciona el tipo
+                                        </option>
+
+                                        <option value="ENTRADA">
+                                            ENTRADA
+                                        </option>
+
+                                        <option value="SALIDA">
+                                            SALIDA
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- SUCURSAL -->
+                                <div class="mb-3">
+
+                                    <label
+                                        for="sucursalMovimiento"
+                                        class="form-label"
+                                    >
+                                        Sucursal
+                                    </label>
+
+                                    <select
+                                        class="form-select"
+                                        id="sucursalMovimiento"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Selecciona una sucursal
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- USUARIO -->
+                                <div class="mb-3">
+
+                                    <label
+                                        for="usuarioMovimiento"
+                                        class="form-label"
+                                    >
+                                        Usuario responsable
+                                    </label>
+
+                                    <select
+                                        class="form-select"
+                                        id="usuarioMovimiento"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Selecciona un usuario
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- OBSERVACION -->
+                                <div class="mb-3">
+
+                                    <label
+                                        for="observacionMovimiento"
+                                        class="form-label"
+                                    >
+                                        Observación
+                                    </label>
+
+                                    <textarea
+                                        class="form-control"
+                                        id="observacionMovimiento"
+                                        rows="3"
+                                        maxlength="255"
+                                        placeholder="Describe el movimiento..."
+                                    ></textarea>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- FOOTER MODAL -->
+                            <div class="modal-footer">
+
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                >
+                                    Cancelar
+                                </button>
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-danger"
+                                    id="btnGuardarMovimiento"
+                                >
+                                    Guardar movimiento
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER -->
+            <footer class="footer">
+                Sistema de Inventario SIMAN . Proyecto académico
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JAVASCRIPT MOVIMIENTOS -->
+    <script src="js/movimientos.js"></script>
+
+</body>
+</html>
